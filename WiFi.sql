@@ -1,0 +1,74 @@
+
+/* Drop Tables */
+
+DROP TABLE [BOOKMARK_LIST];
+DROP TABLE [BOOKMARK_GROUP];
+DROP TABLE [PUBLIC_WIFI];
+DROP TABLE [SEARCH_WIFI];
+
+
+
+
+/* Create Tables */
+
+CREATE TABLE [BOOKMARK_GROUP]
+(
+	[ID] integer NOT NULL,
+	[NAME] text,
+	[ORDER_NO] integer,
+	[REGISTER_DTTM] text,
+	[UPDATE_DTTM] text,
+	PRIMARY KEY ([ID])
+);
+
+
+CREATE TABLE [PUBLIC_WIFI]
+(
+	[ID] integer NOT NULL,
+	[X_SWIFI_MGR_NO] text,
+	[X_SWIFI_WRDOFC] text,
+	[X_SWIFI_MAIN_NM] text,
+	[X_SWIFI_ADRES1] text,
+	[X_SWIFI_ADRES2] text,
+	[X_SWIFI_INSTL_FLOOR] text,
+	[X_SWIFI_INSTL_TY] text,
+	[X_SWIFI_INSTL_MBY] text,
+	[X_SWIFI_SVC_SE] text,
+	[X_SWIFI_CMCWR] text,
+	[X_SWIFI_CNSTC_YEAR] text,
+	[X_SWIFI_INOUT_DOOR] text,
+	[X_SWIFI_REMARS3] text,
+	[LAT] text,
+	[LNT] text,
+	[WORK_DTTM] text,
+	PRIMARY KEY ([ID])
+);
+
+
+CREATE TABLE [BOOKMARK_LIST]
+(
+	[ID] integer NOT NULL,
+	[GROUP_ID] integer,
+	[MGR_NO] integer,
+	[REGISTER_DTTM] text,
+	[ID] integer NOT NULL,
+	[ID] integer NOT NULL,
+	PRIMARY KEY ([ID]),
+	FOREIGN KEY ([ID])
+	REFERENCES [BOOKMARK_GROUP] ([ID]),
+	FOREIGN KEY ([ID])
+	REFERENCES [PUBLIC_WIFI] ([ID])
+);
+
+
+CREATE TABLE [SEARCH_WIFI]
+(
+	[ID] integer NOT NULL,
+	[LAT] text,
+	[LNT] text,
+	[SEARCH_DTTM] text,
+	PRIMARY KEY ([ID])
+);
+
+
+
